@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Trip Planner - TourVista</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="brand-logo">
+                <i class="fa-solid fa-compass brand-icon"></i>
+                <span>Tour<span class="brand-accent">Vista</span></span>
+            </a>
+
+                                    <nav class="nav-links" id="navLinks">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="destinations.html" class="nav-link">Destinations</a>
+                <a href="packages.html" class="nav-link">Packages</a>
+                <a href="map.html" class="nav-link">Interactive Map</a>
+                <a href="ai-planner.html" class="nav-link">AI Trip Planner</a>
+                <a href="about.html" class="nav-link">About Us</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="bookings.html" class="nav-link">My Bookings</a>
+            </nav>
+
+            <div class="nav-actions">
+                <span id="userEmailDisplay" class="user-badge">Tanu Gupta (tg190900@gmail.com)</span>
+                <button id="themeToggleBtn" class="btn-icon" aria-label="Toggle Theme">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <a href="bookings.html" class="btn btn-outline">My Bookings</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Banner -->
+    <section class="page-banner" style="background: linear-gradient(180deg, rgba(11, 31, 58, 0.85) 0%, rgba(11, 31, 58, 0.95) 100%), url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1600&q=80') center/cover; padding: 50px 0; color: #FFF; text-align: center;">
+        <div class="container">
+            <h1 style="font-family: var(--font-heading); font-size: 2.3rem; margin-bottom: 10px;">
+                <i class="fa-solid fa-wand-magic-sparkles" style="color: var(--primary);"></i> AI Smart Itinerary Planner
+            </h1>
+            <p style="color: #94A3B8;">Generate personalized travel itineraries powered by intelligent algorithms.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="section-padding container">
+        <div style="display: grid; grid-template-columns: 350px 1fr; gap: 30px;">
+            
+            <!-- Preference Form -->
+            <div style="background: var(--bg-card); padding: 25px; border-radius: var(--radius-md); border: 1px solid var(--border-color); height: fit-content;">
+                <h2 style="font-size: 1.25rem; font-family: var(--font-heading); margin-bottom: 20px; color: var(--text-main);">Trip Preferences</h2>
+                
+                <form id="aiPlannerForm">
+                    <div style="margin-bottom: 15px;">
+                        <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 5px; color: var(--text-muted);">Destination Focus</label>
+                        <select id="aiDestination" style="width: 100%; padding: 10px; border-radius: var(--radius-sm); border: 1px solid var(--border-color); background: var(--bg-light); color: var(--text-main); font-size: 0.9rem;" required>
+                            <option value="Morena & Chambal Circuit">Morena & Chambal Sanctuary Circuit</option>
+                            <option value="Gwalior Fort & Heritage Tour">Gwalior Fort & Heritage Tour</option>
+                            <option value="Goa Beaches & Culture">Goa Beaches & Culture</option>
+                            <option value="Manali Alpine Adventure">Manali Alpine Adventure</option>
+                        </select>
+                    </div>
+
+                    <div style="margin-bottom: 15px;">
+                        <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 5px; color: var(--text-muted);">Duration (Days)</label>
+                        <input type="number" id="aiDays" min="1" max="10" value="3" style="width: 100%; padding: 10px; border-radius: var(--radius-sm); border: 1px solid var(--border-color); background: var(--bg-light); color: var(--text-main); font-size: 0.9rem;" required>
+                    </div>
+
+                    <div style="margin-bottom: 15px;">
+                        <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 5px; color: var(--text-muted);">Budget Level</label>
+                        <select id="aiBudget" style="width: 100%; padding: 10px; border-radius: var(--radius-sm); border: 1px solid var(--border-color); background: var(--bg-light); color: var(--text-main); font-size: 0.9rem;">
+                            <option value="Budget">Budget Friendly (Homestays / Budget Hotels)</option>
+                            <option value="Balanced" selected>Balanced (3-Star Hotels / Guided Safaris)</option>
+                            <option value="Luxury">Luxury (Resorts & Private Chauffeur)</option>
+                        </select>
+                    </div>
+
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 5px; color: var(--text-muted);">Travel Style</label>
+                        <select id="aiStyle" style="width: 100%; padding: 10px; border-radius: var(--radius-sm); border: 1px solid var(--border-color); background: var(--bg-light); color: var(--text-main); font-size: 0.9rem;">
+                            <option value="Wildlife & Nature">Wildlife & Nature Safari</option>
+                            <option value="Historical Exploration">Historical Forts & Temples</option>
+                            <option value="Relaxation & Leisure">Relaxation & Local Food</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" id="generateBtn" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> Generate Itinerary
+                    </button>
+                </form>
+            </div>
+
+            <!-- Output Display -->
+            <div id="itineraryContainer" style="background: var(--bg-card); padding: 25px; border-radius: var(--radius-md); border: 1px solid var(--border-color); min-height: 400px;">
+                <div id="placeholderState" style="text-align: center; padding: 60px 20px; color: var(--text-muted);">
+                    <i class="fa-solid fa-compass-drafting" style="font-size: 3rem; margin-bottom: 15px; opacity: 0.5;"></i>
+                    <h3>No Itinerary Generated Yet</h3>
+                    <p style="font-size: 0.9rem; max-width: 400px; margin: 10px auto 0;">Select your preferences on the left panel and click "Generate Itinerary" to get a day-wise itinerary.</p>
+                </div>
+
+                <div id="itineraryResult" style="display: none;"></div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-bottom-flex" style="padding: 20px 0; font-size: 0.85rem;">
+            <p>&copy; 2026 TourVista. Maintained by Tanu Gupta (tg190900@gmail.com).</p>
+        </div>
+    </footer>
+
+    <!-- JS Module -->
+    <script type="module" src="js/ai.js"></script>
+    <script type="module" src="js/ai-widget.js"></script>
+</body>
+</html>
+
+

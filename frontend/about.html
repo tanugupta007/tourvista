@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - TourVista</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+</head>
+<body class="page-about">
+
+    <!-- Header / Navigation -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="brand-logo">
+                <i class="fa-solid fa-compass brand-icon"></i>
+                <span>Tour<span class="brand-accent">Vista</span></span>
+            </a>
+
+                                    <nav class="nav-links" id="navLinks">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="destinations.html" class="nav-link">Destinations</a>
+                <a href="packages.html" class="nav-link">Packages</a>
+                <a href="map.html" class="nav-link">Interactive Map</a>
+                <a href="ai-planner.html" class="nav-link">AI Trip Planner</a>
+                <a href="about.html" class="nav-link">About Us</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="bookings.html" class="nav-link">My Bookings</a>
+            </nav>
+
+            <div class="nav-actions">
+                <span id="userEmailDisplay" class="user-badge">Tanu Gupta (tg190900@gmail.com)</span>
+                <button id="themeToggleBtn" class="btn-icon" aria-label="Toggle Theme">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <a href="bookings.html" class="btn btn-outline">My Bookings</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-banner" style="background: linear-gradient(135deg, var(--navy) 0%, #1E293B 100%); padding: 60px 0; color: #FFF; text-align: center;">
+        <div class="container">
+            <span style="background: rgba(37, 99, 235, 0.2); color: #60A5FA; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">Empowering Modern Exploration</span>
+            <h1 style="font-family: var(--font-heading); font-size: 2.5rem; margin: 15px 0 10px;">About TourVista</h1>
+            <p style="color: #94A3B8; max-width: 650px; margin: 0 auto;">Combining cutting-edge web technology, AI itinerary generation, and deep local heritage appreciation to deliver seamless travel planning.</p>
+        </div>
+    </section>
+
+    <!-- Mission & Core Tech Stack -->
+    <section class="section-padding container">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
+            <div>
+                <h2 style="font-family: var(--font-heading); font-size: 1.8rem; color: var(--navy); margin-bottom: 15px;">Bridging Heritage & Intelligent Tech</h2>
+                <p style="color: var(--text-muted); line-height: 1.7; margin-bottom: 15px;">
+                    TourVista was built as a full-stack tourism management platform aimed at revitalizing interest in rich regional heritage—such as the historic Mitawali, Padavali, and Bateshwar temple clusters in Morena—while providing travelers worldwide with smart, automated trip planning tools.
+                </p>
+                <p style="color: var(--text-muted); line-height: 1.7; margin-bottom: 20px;">
+                    From dynamic Leaflet.js interactive maps to AI-assisted itinerary generation and seamless Firebase backend integration, TourVista demonstrates how modern web engineering transforms destination discovery.
+                </p>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div style="background: var(--bg-card); padding: 15px; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
+                        <i class="fa-solid fa-code" style="color: var(--primary); font-size: 1.3rem; margin-bottom: 8px;"></i>
+                        <h4 style="font-size: 0.95rem; color: var(--text-main);">Full Stack Web</h4>
+                        <p style="font-size: 0.8rem; color: var(--text-muted); margin: 0;">HTML5, Modular CSS, ES6 JavaScript & Express API</p>
+                    </div>
+                    <div style="background: var(--bg-card); padding: 15px; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
+                        <i class="fa-solid fa-brain" style="color: var(--primary); font-size: 1.3rem; margin-bottom: 8px;"></i>
+                        <h4 style="font-size: 0.95rem; color: var(--text-main);">AI-Driven Insights</h4>
+                        <p style="font-size: 0.8rem; color: var(--text-muted); margin: 0;">Personalized multi-day plans based on budget and preferences</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Developer Profile Card -->
+            <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 30px; text-align: center; box-shadow: var(--shadow-sm);">
+                <div style="width: 100px; height: 100px; border-radius: 50%; background: var(--primary); color: #FFF; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; margin: 0 auto 20px; font-weight: 700;">
+                    TG
+                </div>
+                <h3 style="font-family: var(--font-heading); font-size: 1.4rem; color: var(--text-main); margin-bottom: 5px;">Tanu Gupta</h3>
+                <p style="color: var(--primary); font-weight: 600; font-size: 0.9rem; margin-bottom: 15px;">Lead Software Developer & Architect</p>
+                <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 20px;">
+                    Passionate full-stack developer based in Morena, specialized in building clean, scalable web applications with intuitive UX and resilient architecture.
+                </p>
+                
+                <div style="display: flex; justify-content: center; gap: 15px;">
+                    <a href="mailto:tg190900@gmail.com" class="btn btn-outline" style="font-size: 0.85rem; padding: 8px 16px;">
+                        <i class="fa-solid fa-envelope"></i> tg190900@gmail.com
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Metrics / Highlights -->
+    <section style="background: var(--bg-light); padding: 50px 0; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+        <div class="container" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; text-align: center;">
+            <div>
+                <h3 id="statDestinations" style="font-size: 2.2rem; font-family: var(--font-heading); color: var(--primary); margin-bottom: 5px;">12+</h3>
+                <p style="font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;">Curated Destinations</p>
+            </div>
+            <div>
+                <h3 id="statPackages" style="font-size: 2.2rem; font-family: var(--font-heading); color: var(--primary); margin-bottom: 5px;">8+</h3>
+                <p style="font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;">Heritage Tour Packages</p>
+            </div>
+            <div>
+                <h3 id="statSatisfaction" style="font-size: 2.2rem; font-family: var(--font-heading); color: var(--primary); margin-bottom: 5px;">99%</h3>
+                <p style="font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;">Positive Feedback</p>
+            </div>
+            <div>
+                <h3 id="statUptime" style="font-size: 2.2rem; font-family: var(--font-heading); color: var(--primary); margin-bottom: 5px;">100%</h3>
+                <p style="font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;">Responsive Design</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-bottom-flex" style="padding: 20px 0; font-size: 0.85rem;">
+            <p>&copy; 2026 TourVista. Maintained by Tanu Gupta (tg190900@gmail.com).</p>
+        </div>
+    </footer>
+
+    <!-- JS Module -->
+    <script type="module" src="js/about.js"></script>
+    <script type="module" src="js/ai-widget.js"></script>
+</body>
+</html>
+
+

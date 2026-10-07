@@ -1,0 +1,116 @@
+﻿@media (max-width: 1024px) {
+  .nav-links {
+    gap: 14px;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 820px) {
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 72px;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border-color);
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .hamburger-btn {
+    display: block;
+  }
+
+  .nav-actions {
+    gap: 8px;
+  }
+
+  .search-box {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-title {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    width: 92%;
+  }
+
+  .hero-section {
+    padding-top: 90px;
+  }
+
+  .hero-title {
+    font-size: 1.8rem;
+  }
+
+  .nav-actions .btn-outline,
+  .nav-actions .btn-primary {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .package-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .map-page-layout {
+    grid-template-columns: 1fr;
+  }
+
+  #interactiveMap {
+    min-height: 420px;
+  }
+
+  .section-padding > div[style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .page-banner {
+    min-height: 175px;
+    padding: 42px 0 !important;
+  }
+
+  .page-banner h1 {
+    font-size: 1.9rem !important;
+  }
+
+  .package-toolbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .package-toolbar > label,
+  .package-toolbar .package-search {
+    min-width: 0;
+  }
+
+  .map-sidebar,
+  .map-frame {
+    padding: 14px;
+  }
+
+  #interactiveMap {
+    min-height: 350px;
+  }
+
+  #destDetailImg,
+  #pkgDetailImg {
+    height: 270px !important;
+  }
+}

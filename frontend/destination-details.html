@@ -1,0 +1,161 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destination Details - TourVista</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="brand-logo">
+                <i class="fa-solid fa-compass brand-icon"></i>
+                <span>Tour<span class="brand-accent">Vista</span></span>
+            </a>
+
+                                    <nav class="nav-links" id="navLinks">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="destinations.html" class="nav-link">Destinations</a>
+                <a href="packages.html" class="nav-link">Packages</a>
+                <a href="map.html" class="nav-link">Interactive Map</a>
+                <a href="ai-planner.html" class="nav-link">AI Trip Planner</a>
+                <a href="about.html" class="nav-link">About Us</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="bookings.html" class="nav-link">My Bookings</a>
+            </nav>
+
+            <div class="nav-actions">
+                <span id="userEmailDisplay" class="user-badge">Tanu Gupta (tg190900@gmail.com)</span>
+                <button id="themeToggleBtn" class="btn-icon" aria-label="Toggle Theme">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <a href="bookings.html" class="btn btn-outline">My Bookings</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="section-padding container">
+        <a href="destinations.html" class="btn btn-outline" style="margin-bottom: 25px; display: inline-flex; gap: 8px;">
+            <i class="fa-solid fa-arrow-left"></i> Back to Destinations
+        </a>
+
+        <!-- Skeleton Loader -->
+        <div id="destSkeleton" style="display: block;">
+            <div style="height: 350px; background: #e2e8f0; border-radius: 12px; margin-bottom: 25px;"></div>
+            <div style="height: 30px; width: 50%; background: #e2e8f0; margin-bottom: 15px;"></div>
+            <div style="height: 100px; width: 100%; background: #e2e8f0;"></div>
+        </div>
+
+        <!-- Dynamic Destination Mount -->
+        <div id="destContainer" style="display: none; grid-template-columns: 2.2fr 1fr; gap: 35px;">
+            
+            <!-- Left Info Panel -->
+            <div>
+                <div style="position: relative; border-radius: var(--radius-md); overflow: hidden; margin-bottom: 25px; box-shadow: var(--shadow-md);">
+                    <img id="destDetailImg" src="" alt="Destination Image" style="width: 100%; height: 400px; object-fit: cover; display: block;">
+                    <span id="destCategoryBadge" style="position: absolute; top: 20px; left: 20px; background: var(--primary); color: #FFF; padding: 6px 14px; border-radius: 20px; font-weight: 600; font-size: 0.85rem;"></span>
+                </div>
+
+                <h1 id="destTitle" style="font-family: var(--font-heading); font-size: 2.3rem; color: var(--navy); margin-bottom: 10px;"></h1>
+                
+                <div style="display: flex; gap: 20px; align-items: center; margin-bottom: 20px; color: var(--text-muted); font-size: 0.95rem;">
+                    <span><i class="fa-solid fa-location-dot" style="color: var(--primary);"></i> <strong id="destLocation"></strong></span>
+                    <span><i class="fa-solid fa-star" style="color: #F59E0B;"></i> <strong id="destRating"></strong> / 5.0</span>
+                    <span><i class="fa-solid fa-calendar-day" style="color: var(--secondary);"></i> Best Time: <strong id="destBestTime">Oct - Mar</strong></span>
+                </div>
+
+                <hr style="border: none; border-top: 1px solid var(--border-color); margin: 25px 0;">
+
+                <h3 style="font-family: var(--font-heading); color: var(--navy); margin-bottom: 10px;">About This Destination</h3>
+                <p id="destDescription" style="color: var(--text-muted); line-height: 1.8; margin-bottom: 25px; font-size: 1rem;"></p>
+
+                <h3 style="font-family: var(--font-heading); color: var(--navy); margin-bottom: 15px;">Key Attractions & Features</h3>
+                <div id="destAttractionsGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 30px;"></div>
+
+                <h3 style="font-family: var(--font-heading); color: var(--navy); margin-bottom: 15px;">Location Coordinates & Map</h3>
+                <div id="destMap" style="height: 300px; border-radius: var(--radius-md); border: 1px solid var(--border-color); overflow: hidden; margin-bottom: 30px;"></div>
+
+                <section aria-labelledby="reviewHeading" style="margin-top: 25px;">
+                    <h3 id="reviewHeading" style="font-family: var(--font-heading); color: var(--navy); margin-bottom: 15px;">Traveler Reviews</h3>
+                    <div id="destinationReviews" aria-live="polite"></div>
+                    <form id="destinationReviewForm" style="display: grid; gap: 10px; max-width: 620px; margin-top: 18px;">
+                        <label>Your name <input id="reviewName" maxlength="60" required style="display:block;width:100%;padding:10px;border:1px solid var(--border-color);border-radius:8px;"></label>
+                        <label>Rating <select id="reviewRating" required style="display:block;padding:10px;border:1px solid var(--border-color);border-radius:8px;"><option value="5">5 stars</option><option value="4">4 stars</option><option value="3">3 stars</option><option value="2">2 stars</option><option value="1">1 star</option></select></label>
+                        <label>Your review <textarea id="reviewText" maxlength="1000" required rows="3" style="display:block;width:100%;padding:10px;border:1px solid var(--border-color);border-radius:8px;"></textarea></label>
+                        <label>Photo (optional, max 1 MB) <input id="reviewImage" type="file" accept="image/*"></label>
+                        <button class="btn btn-primary" type="submit">Add review</button>
+                        <small>Reviews and photos are stored in this browser only.</small>
+                    </form>
+                </section>
+            </div>
+
+            <!-- Right Sidebar Panel -->
+            <div>
+                <div style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 25px; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); position: sticky; top: 100px;">
+                    <h3 style="font-family: var(--font-heading); font-size: 1.2rem; color: var(--navy); margin-bottom: 15px;">Travel Planning Quick Facts</h3>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 15px; font-size: 0.9rem; color: var(--text-muted); margin-bottom: 25px;">
+                        <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">
+                            <span>Nearest Airport</span>
+                            <strong style="color: var(--text-main);">Gwalior (GWL) ~40 km</strong>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">
+                            <span>Nearest Railway Station</span>
+                            <strong style="color: var(--text-main);">Morena (MRA)</strong>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">
+                            <span>Recommended Stay</span>
+                            <strong style="color: var(--text-main);">1 - 2 Days</strong>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">
+                            <span>Entry Fee</span>
+                            <strong style="color: var(--primary);">Free / Nominal</strong>
+                        </div>
+                    </div>
+
+                    <a href="packages.html" class="btn btn-primary" style="width: 100%; justify-content: center; font-size: 0.95rem;">
+                        <i class="fa-solid fa-suitcase"></i> Explore Tour Packages
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-bottom-flex" style="padding: 20px 0; font-size: 0.85rem;">
+            <p>&copy; 2026 TourVista. Maintained by Tanu Gupta (tg190900@gmail.com).</p>
+        </div>
+    </footer>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- JS Module -->
+    <script type="module" src="js/destination-detail.js"></script>
+    <script type="module" src="js/ai-widget.js"></script>
+</body>
+</html>
+
+

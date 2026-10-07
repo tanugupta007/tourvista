@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Bookings - TourVista</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+</head>
+<body class="page-bookings">
+
+    <!-- Header / Navigation -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="brand-logo">
+                <i class="fa-solid fa-compass brand-icon"></i>
+                <span>Tour<span class="brand-accent">Vista</span></span>
+            </a>
+
+                                    <nav class="nav-links" id="navLinks">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="destinations.html" class="nav-link">Destinations</a>
+                <a href="packages.html" class="nav-link">Packages</a>
+                <a href="map.html" class="nav-link">Interactive Map</a>
+                <a href="ai-planner.html" class="nav-link">AI Trip Planner</a>
+                <a href="about.html" class="nav-link">About Us</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="bookings.html" class="nav-link">My Bookings</a>
+            </nav>
+
+            <div class="nav-actions">
+                <span id="userEmailDisplay" class="user-badge">Tanu Gupta (tg190900@gmail.com)</span>
+                <button id="themeToggleBtn" class="btn-icon" aria-label="Toggle Theme">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <a href="bookings.html" class="btn btn-outline active">My Bookings</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Banner -->
+    <section class="page-banner" style="background: var(--navy); padding: 40px 0; color: #FFF; text-align: center;">
+        <div class="container">
+            <h1 style="font-family: var(--font-heading); font-size: 2.2rem; margin-bottom: 8px;">My Booking Management</h1>
+            <p style="color: #94A3B8; font-size: 0.95rem;">Track, view itinerary receipts, or cancel your upcoming reservations.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="section-padding container">
+        
+        <!-- Booking Tabs & Stats Summary -->
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 15px; margin-bottom: 30px; border-bottom: 1px solid var(--border-color); padding-bottom: 15px;">
+            <div style="display: flex; gap: 10px;">
+                <button class="booking-tab-btn active" data-tab="all" style="padding: 8px 18px; border-radius: var(--radius-full); border: 1px solid var(--primary); background: var(--primary); color: #FFF; font-weight: 600; cursor: pointer; font-size: 0.85rem;">All Bookings</button>
+                <button class="booking-tab-btn" data-tab="confirmed" style="padding: 8px 18px; border-radius: var(--radius-full); border: 1px solid var(--border-color); background: var(--bg-light); color: var(--text-main); font-weight: 600; cursor: pointer; font-size: 0.85rem;">Confirmed</button>
+                <button class="booking-tab-btn" data-tab="completed" style="padding: 8px 18px; border-radius: var(--radius-full); border: 1px solid var(--border-color); background: var(--bg-light); color: var(--text-main); font-weight: 600; cursor: pointer; font-size: 0.85rem;">Completed</button>
+            </div>
+
+            <div style="font-size: 0.85rem; color: var(--text-muted);">
+                User Profile: <strong>Tanu Gupta</strong> (<span style="color: var(--primary);">tg190900@gmail.com</span>)
+            </div>
+        </div>
+
+        <!-- Bookings List Container -->
+        <div id="bookingsList" style="display: flex; flex-direction: column; gap: 20px;">
+            <div class="loading-spinner" style="text-align: center; padding: 40px; color: var(--text-muted);">
+                <i class="fa-solid fa-circle-notch fa-spin"></i> Fetching your tour bookings...
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Receipt Details Modal -->
+    <div id="receiptModal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 1000; justify-content: center; align-items: center; padding: 20px;">
+        <div style="background: var(--bg-card); width: 100%; max-width: 550px; border-radius: var(--radius-md); padding: 25px; border: 1px solid var(--border-color); position: relative; box-shadow: var(--shadow-lg);">
+            <button id="closeModalBtn" style="position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 1.2rem; cursor: pointer; color: var(--text-muted);">&times;</button>
+            
+            <div id="receiptContent">
+                <!-- Dynamic Content Injected Here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-bottom-flex" style="padding: 20px 0; font-size: 0.85rem;">
+            <p>&copy; 2026 TourVista. Maintained by Tanu Gupta (tg190900@gmail.com).</p>
+        </div>
+    </footer>
+
+    <!-- JS Module -->
+    <script type="module" src="js/bookings.js"></script>
+    <script type="module" src="js/ai-widget.js"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,164 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Package Details - TourVista</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Leaflet CSS for Map Preview -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="brand-logo">
+                <i class="fa-solid fa-compass brand-icon"></i>
+                <span>Tour<span class="brand-accent">Vista</span></span>
+            </a>
+
+                                    <nav class="nav-links" id="navLinks">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="destinations.html" class="nav-link">Destinations</a>
+                <a href="packages.html" class="nav-link">Packages</a>
+                <a href="map.html" class="nav-link">Interactive Map</a>
+                <a href="ai-planner.html" class="nav-link">AI Trip Planner</a>
+                <a href="about.html" class="nav-link">About Us</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="bookings.html" class="nav-link">My Bookings</a>
+            </nav>
+
+            <div class="nav-actions">
+                <span id="userEmailDisplay" class="user-badge">Tanu Gupta (tg190900@gmail.com)</span>
+                <button id="themeToggleBtn" class="btn-icon" aria-label="Toggle Theme">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <a href="bookings.html" class="btn btn-outline">My Bookings</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Package Detail Container -->
+    <main class="section-padding container">
+        <a href="packages.html" class="btn btn-outline" style="margin-bottom: 25px; display: inline-flex; gap: 8px;">
+            <i class="fa-solid fa-arrow-left"></i> Back to Packages
+        </a>
+
+        <!-- Skeleton Loader -->
+        <div id="packageDetailSkeleton" style="display: block;">
+            <div style="height: 300px; background: #e2e8f0; border-radius: 12px; margin-bottom: 25px;"></div>
+            <div style="height: 30px; width: 60%; background: #e2e8f0; margin-bottom: 15px;"></div>
+            <div style="height: 20px; width: 40%; background: #e2e8f0;"></div>
+        </div>
+
+        <!-- Dynamic Content Mount -->
+        <div id="packageDetailContainer" style="display: none; grid-template-columns: 2fr 1fr; gap: 35px;">
+            
+            <!-- Main Content Area -->
+            <div>
+                <div style="position: relative; border-radius: var(--radius-md); overflow: hidden; margin-bottom: 25px; box-shadow: var(--shadow-md);">
+                    <img id="pkgDetailImg" src="" alt="Package Image" style="width: 100%; height: 380px; object-fit: cover; display: block;">
+                    <span id="pkgCategoryBadge" style="position: absolute; top: 20px; left: 20px; background: var(--primary); color: #fff; padding: 6px 14px; border-radius: 20px; font-weight: 600; font-size: 0.85rem;"></span>
+                </div>
+
+                <h1 id="pkgTitle" style="font-family: var(--font-heading); font-size: 2.2rem; color: var(--navy); margin-bottom: 10px;"></h1>
+                
+                <div style="display: flex; gap: 20px; align-items: center; margin-bottom: 20px; color: var(--text-muted); font-size: 0.95rem;">
+                    <span><i class="fa-solid fa-clock" style="color: var(--primary);"></i> <strong id="pkgDuration"></strong></span>
+                    <span><i class="fa-solid fa-location-dot" style="color: var(--primary);"></i> <strong id="pkgLocation"></strong></span>
+                    <span><i class="fa-solid fa-star" style="color: #F59E0B;"></i> <strong id="pkgRating"></strong> Rating</span>
+                </div>
+
+                <hr style="border: none; border-top: 1px solid var(--border-color); margin: 25px 0;">
+
+                <h3 style="font-family: var(--font-heading); color: var(--navy); margin-bottom: 10px;">Overview & Experience</h3>
+                <p id="pkgDescription" style="color: var(--text-muted); line-height: 1.8; margin-bottom: 25px; font-size: 1rem;"></p>
+
+                <h3 style="font-family: var(--font-heading); color: var(--navy); margin-bottom: 15px;">Itinerary Highlights</h3>
+                <ul id="pkgHighlights" style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 12px; margin-bottom: 30px;"></ul>
+
+                <h3 style="font-family: var(--font-heading); color: var(--navy); margin-bottom: 15px;">Route & Map Preview</h3>
+                <div id="pkgMapPreview" style="height: 280px; border-radius: var(--radius-md); border: 1px solid var(--border-color); overflow: hidden; margin-bottom: 30px;"></div>
+            </div>
+
+            <!-- Booking Sidebar -->
+            <div>
+                <div style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 25px; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); position: sticky; top: 100px;">
+                    <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 20px;">
+                        <span style="font-size: 0.9rem; color: var(--text-muted);">Price per person</span>
+                        <span id="pkgPrice" style="font-size: 2rem; font-weight: 800; color: var(--primary); font-family: var(--font-heading);"></span>
+                    </div>
+
+                    <div id="bookingAlert" style="display: none; padding: 10px 14px; border-radius: var(--radius-sm); margin-bottom: 15px; font-size: 0.85rem;"></div>
+
+                    <form id="bookingForm">
+                        <div style="margin-bottom: 15px;">
+                            <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 5px;">Select Travel Date</label>
+                            <input type="date" id="bookingDate" style="width: 100%; padding: 10px 12px; border: 1px solid var(--border-color); border-radius: var(--radius-sm); background: var(--bg-light); color: var(--text-main);" required>
+                        </div>
+
+                        <div style="margin-bottom: 15px;">
+                            <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 5px;">Number of Guests</label>
+                            <select id="bookingGuests" style="width: 100%; padding: 10px 12px; border: 1px solid var(--border-color); border-radius: var(--radius-sm); background: var(--bg-light); color: var(--text-main);">
+                                <option value="1">1 Person</option>
+                                <option value="2" selected>2 Persons</option>
+                                <option value="3">3 Persons</option>
+                                <option value="4">4+ Persons (Group)</option>
+                            </select>
+                        </div>
+
+                        <div style="margin-bottom: 20px;">
+                            <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 5px;">Lead Traveler Name</label>
+                            <input type="text" id="bookingName" autocomplete="name" maxlength="100" style="width: 100%; padding: 10px 12px; border: 1px solid var(--border-color); border-radius: var(--radius-sm); background: var(--bg-light); color: var(--text-main);" required>
+                        </div>
+                        <div style="margin-bottom: 20px;">
+                            <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 5px;">Contact Email</label>
+                            <input type="email" id="bookingEmail" autocomplete="email" style="width: 100%; padding: 10px 12px; border: 1px solid var(--border-color); border-radius: var(--radius-sm); background: var(--bg-light); color: var(--text-main);" required>
+                        </div>
+
+                        <button type="submit" id="confirmBookingBtn" class="btn btn-primary" style="width: 100%; justify-content: center; font-size: 1rem; padding: 12px;">
+                            <i class="fa-solid fa-bolt"></i> Book Package Now
+                        </button>
+                    </form>
+
+                    <p style="font-size: 0.75rem; color: var(--text-muted); text-align: center; margin-top: 15px;">
+                        Booking requests are saved on this device. No payment or instant confirmation is provided.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-bottom-flex" style="padding: 20px 0; font-size: 0.85rem;">
+            <p>&copy; 2026 TourVista. Maintained by Tanu Gupta (tg190900@gmail.com).</p>
+        </div>
+    </footer>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- JS Module -->
+    <script type="module" src="js/details.js"></script>
+    <script type="module" src="js/ai-widget.js"></script>
+</body>
+</html>
+
+

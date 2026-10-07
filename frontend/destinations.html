@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Destinations - TourVista</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="brand-logo">
+                <i class="fa-solid fa-compass brand-icon"></i>
+                <span>Tour<span class="brand-accent">Vista</span></span>
+            </a>
+
+                                    <nav class="nav-links" id="navLinks">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="destinations.html" class="nav-link">Destinations</a>
+                <a href="packages.html" class="nav-link">Packages</a>
+                <a href="map.html" class="nav-link">Interactive Map</a>
+                <a href="ai-planner.html" class="nav-link">AI Trip Planner</a>
+                <a href="about.html" class="nav-link">About Us</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="bookings.html" class="nav-link">My Bookings</a>
+            </nav>
+
+            <div class="nav-actions">
+                <span id="userEmailDisplay" class="user-badge">Tanu Gupta (tg190900@gmail.com)</span>
+                <button id="themeToggleBtn" class="btn-icon" aria-label="Toggle Theme">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <a href="bookings.html" class="btn btn-outline">My Bookings</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Banner -->
+    <section class="page-banner" style="background: linear-gradient(180deg, rgba(11, 31, 58, 0.8) 0%, rgba(11, 31, 58, 0.95) 100%), url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80') center/cover; padding: 60px 0; color: #FFF; text-align: center;">
+        <div class="container">
+            <h1 style="font-family: var(--font-heading); font-size: 2.5rem; margin-bottom: 10px;">Explore Top Destinations</h1>
+            <p style="color: #94A3B8;">Filter by location, category, or budget to discover your next favorite spot.</p>
+        </div>
+    </section>
+
+    <!-- Main Content with Sidebar Filters -->
+    <section class="section-padding container">
+        <div style="display: grid; grid-template-columns: 280px 1fr; gap: 30px;" class="destinations-layout">
+            
+            <!-- Filter Sidebar -->
+            <aside style="background: var(--bg-card); padding: 25px; border-radius: var(--radius-md); border: 1px solid var(--border-color); height: fit-content;">
+                <h3 style="font-family: var(--font-heading); margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center;">
+                    <span><i class="fa-solid fa-filter" style="color: var(--primary);"></i> Filters</span>
+                    <button id="clearFiltersBtn" style="background: none; border: none; color: var(--primary); font-size: 0.85rem; cursor: pointer;">Reset</button>
+                </h3>
+
+                <!-- Search Input -->
+                <div style="margin-bottom: 20px;">
+                    <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 8px;">Search</label>
+                    <input type="text" id="filterSearchInput" placeholder="Any place in India: Mumbai, Taj Mahal, Kerala..." style="width: 100%; padding: 10px; border: 1px solid var(--border-color); border-radius: var(--radius-sm); outline: none; background: var(--bg-light); color: var(--text-main);">
+                </div>
+
+                <!-- Category Filter -->
+                <div style="margin-bottom: 20px;">
+                    <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 8px;">Category</label>
+                    <select id="filterCategory" style="width: 100%; padding: 10px; border: 1px solid var(--border-color); border-radius: var(--radius-sm); outline: none; background: var(--bg-light); color: var(--text-main);">
+                        <option value="all">All Categories</option>
+                        <option value="heritage">Heritage & Temples</option>
+                        <option value="wildlife">Wildlife & River Safaris</option>
+                        <option value="adventure">Adventure & Trekking</option>
+                        <option value="beach">Beaches & Coastal</option>
+                    </select>
+                </div>
+
+                <!-- Price Range Filter -->
+                <div style="margin-bottom: 20px;">
+                    <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 8px;">Max Budget: ₹<span id="priceValue">15,000</span></label>
+                    <input type="range" id="filterPriceRange" min="1000" max="20000" step="500" value="15000" style="width: 100%;">
+                </div>
+
+                <!-- Sorting Option -->
+                <div>
+                    <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 8px;">Sort By</label>
+                    <select id="filterSortBy" style="width: 100%; padding: 10px; border: 1px solid var(--border-color); border-radius: var(--radius-sm); outline: none; background: var(--bg-light); color: var(--text-main);">
+                        <option value="featured">Featured First</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="rating">Highest Rated</option>
+                    </select>
+                </div>
+            </aside>
+
+            <!-- Destinations Cards Grid -->
+            <main>
+                <div style="margin-bottom: 15px; color: var(--text-muted); font-size: 0.9rem;" id="resultsCount">
+                    Showing all destinations
+                </div>
+                
+                <div class="destinations-grid" id="destinationsContainer">
+                    <div class="loading-spinner"><i class="fa-solid fa-circle-notch fa-spin"></i> Fetching destinations...</div>
+                </div>
+                <div id="indiaSearchResults" style="margin-top: 28px;"></div>
+            </main>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-bottom-flex" style="padding: 20px 0; font-size: 0.85rem;">
+            <p>&copy; 2026 TourVista. Maintained by Tanu Gupta (tg190900@gmail.com).</p>
+        </div>
+    </footer>
+
+    <script type="module" src="js/destinations.js"></script>
+    <script type="module" src="js/ai-widget.js"></script>
+</body>
+</html>
+
+

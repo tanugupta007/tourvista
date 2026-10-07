@@ -1,0 +1,302 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TourVista - AI Travel & Booking Platform</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="brand-logo">
+                <i class="fa-solid fa-compass brand-icon"></i>
+                <span>Tour<span class="brand-accent">Vista</span></span>
+            </a>
+
+                                    <nav class="nav-links" id="navLinks">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="destinations.html" class="nav-link">Destinations</a>
+                <a href="packages.html" class="nav-link">Packages</a>
+                <a href="map.html" class="nav-link">Interactive Map</a>
+                <a href="ai-planner.html" class="nav-link">AI Trip Planner</a>
+                <a href="about.html" class="nav-link">About Us</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="bookings.html" class="nav-link">My Bookings</a>
+            </nav>
+
+            <div class="nav-actions">
+                <span id="userEmailDisplay" class="user-badge">Guest Traveler</span>
+                <button id="themeToggleBtn" class="btn-icon" aria-label="Toggle Theme">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <a href="bookings.html" class="btn btn-outline">My Bookings</a>
+                <button id="loginModalBtn" class="btn btn-primary">Login</button>
+            </div>
+
+            <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle Navigation">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h1 class="hero-title">Explore the World with Smart AI Travel Planning</h1>
+            <p class="hero-subtitle">Discover handpicked destinations, personalized itineraries, and seamless booking for your next adventure.</p>
+            
+            <!-- Quick Search Widget -->
+            <div class="search-box">
+                <div class="search-field">
+                    <i class="fa-solid fa-location-dot search-icon"></i>
+                    <div class="field-inputs">
+                        <label for="searchLocation">Destination</label>
+                        <input type="text" id="searchLocation" placeholder="Where do you want to go?">
+                    </div>
+                </div>
+
+                <div class="search-divider"></div>
+
+                <div class="search-field">
+                    <i class="fa-solid fa-calendar-days search-icon"></i>
+                    <div class="field-inputs">
+                        <label for="searchDate">Travel Date</label>
+                        <input type="date" id="searchDate">
+                    </div>
+                </div>
+
+                <div class="search-divider"></div>
+
+                <div class="search-field">
+                    <i class="fa-solid fa-tags search-icon"></i>
+                    <div class="field-inputs">
+                        <label for="searchCategory">Category</label>
+                        <select id="searchCategory">
+                            <option value="all">All Categories</option>
+                            <option value="heritage">Heritage & Culture</option>
+                            <option value="wildlife">Wildlife Safari</option>
+                            <option value="adventure">Adventure</option>
+                            <option value="beach">Beaches</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button id="mainSearchBtn" class="btn btn-primary search-btn">
+                    <i class="fa-solid fa-magnifying-glass"></i> Search
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding container">
+        <div class="section-header">
+            <div>
+                <span class="section-tag">All Pages</span>
+                <h2 class="section-title">Explore the Entire TourVista Frontend</h2>
+            </div>
+        </div>
+
+        <div class="destinations-grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
+            <a href="destinations.html" class="btn btn-outline" style="height: 100%; min-height: 120px; flex-direction: column; justify-content: center; border-radius: var(--radius-md);">Destinations</a>
+            <a href="packages.html" class="btn btn-outline" style="height: 100%; min-height: 120px; flex-direction: column; justify-content: center; border-radius: var(--radius-md);">Packages</a>
+            <a href="map.html" class="btn btn-outline" style="height: 100%; min-height: 120px; flex-direction: column; justify-content: center; border-radius: var(--radius-md);">Interactive Map</a>
+            <a href="ai-planner.html" class="btn btn-outline" style="height: 100%; min-height: 120px; flex-direction: column; justify-content: center; border-radius: var(--radius-md);">AI Planner</a>
+            <a href="about.html" class="btn btn-outline" style="height: 100%; min-height: 120px; flex-direction: column; justify-content: center; border-radius: var(--radius-md);">About Us</a>
+            <a href="contact.html" class="btn btn-outline" style="height: 100%; min-height: 120px; flex-direction: column; justify-content: center; border-radius: var(--radius-md);">Contact</a>
+            <a href="bookings.html" class="btn btn-outline" style="height: 100%; min-height: 120px; flex-direction: column; justify-content: center; border-radius: var(--radius-md);">My Bookings</a>
+        </div>
+    </section>
+
+    <section class="stats-strip container">
+        <div class="stat-box">
+            <strong>12K+</strong>
+            <span>Happy Travelers</span>
+        </div>
+        <div class="stat-box">
+            <strong>180+</strong>
+            <span>Tailor-made Routes</span>
+        </div>
+        <div class="stat-box">
+            <strong>4.9/5</strong>
+            <span>Guest Satisfaction</span>
+        </div>
+        <div class="stat-box">
+            <strong>24/7</strong>
+            <span>Trip Support</span>
+        </div>
+    </section>
+
+    <!-- Featured Destinations Section -->
+    <section class="section-padding container">
+        <div class="section-header">
+            <div>
+                <span class="section-tag">Top Places</span>
+                <h2 class="section-title">Popular Destinations</h2>
+            </div>
+            <a href="destinations.html" class="btn-link">View All Destinations <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+
+        <div class="destinations-grid" id="featuredDestinationsGrid">
+            <article class="destination-card featured">
+                <div class="destination-image" style="background-image: url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=80');"></div>
+                <div class="destination-content">
+                    <div class="destination-meta">
+                        <span class="tag">Heritage</span>
+                        <span class="rating"><i class="fa-solid fa-star"></i> 4.9</span>
+                    </div>
+                    <h3>Morena Heritage Trail</h3>
+                    <p>Ancient temples, heritage routes, and immersive local culture.</p>
+                    <div class="destination-footer">
+                        <span>From ₹3,499</span>
+                        <a href="destination-details.html?id=mitawali-1">Explore</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="destination-card featured">
+                <div class="destination-image" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80');"></div>
+                <div class="destination-content">
+                    <div class="destination-meta">
+                        <span class="tag">Beach</span>
+                        <span class="rating"><i class="fa-solid fa-star"></i> 4.8</span>
+                    </div>
+                    <h3>Goa Coastal Escape</h3>
+                    <p>Sunlit beaches, water sports, and sunset evenings by the shore.</p>
+                    <div class="destination-footer">
+                        <span>From ₹8,999</span>
+                        <a href="destination-details.html?id=goa-03">Explore</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="destination-card featured">
+                <div class="destination-image" style="background-image: url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=80');"></div>
+                <div class="destination-content">
+                    <div class="destination-meta">
+                        <span class="tag">Wildlife</span>
+                        <span class="rating"><i class="fa-solid fa-star"></i> 4.7</span>
+                    </div>
+                    <h3>Chambal Safari</h3>
+                    <p>Boat rides, gharial spotting, and unforgettable river landscapes.</p>
+                    <div class="destination-footer">
+                        <span>From ₹4,999</span>
+                        <a href="destination-details.html?id=chambal-safari-1">Explore</a>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <section class="section-padding container travel-experience">
+        <div class="section-header">
+            <div>
+                <span class="section-tag">Why TourVista</span>
+                <h2 class="section-title">Travel smarter, not harder</h2>
+            </div>
+        </div>
+
+        <div class="experience-grid">
+            <div class="experience-card">
+                <i class="fa-solid fa-map-location-dot"></i>
+                <h3>Curated routes</h3>
+                <p>Handpicked destinations, personalized planning, and locally trusted experiences.</p>
+            </div>
+            <div class="experience-card">
+                <i class="fa-solid fa-robot"></i>
+                <h3>AI trip planner</h3>
+                <p>Build day-by-day itineraries in minutes based on your style, budget, and goals.</p>
+            </div>
+            <div class="experience-card">
+                <i class="fa-solid fa-shield-heart"></i>
+                <h3>Reliable booking</h3>
+                <p>Secure trip reservations, instant confirmations, and transparent pricing.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Trip Planner Banner -->
+    <section class="ai-banner-section">
+        <div class="container ai-banner-container">
+            <div class="ai-banner-text">
+                <span class="badge-ai"><i class="fa-solid fa-wand-magic-sparkles"></i> AI Powered</span>
+                <h2>Plan Your Complete Trip in 30 Seconds</h2>
+                <p>Enter your destination, budget, and travel style to generate a day-by-day itinerary tailored specifically for you.</p>
+                <a href="ai-planner.html" class="btn btn-primary btn-lg">Try AI Planner Now</a>
+            </div>
+            <div class="ai-banner-visual">
+                <i class="fa-solid fa-robot ai-icon-bg"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <a href="index.html" class="brand-logo footer-logo">
+                    <i class="fa-solid fa-compass brand-icon"></i>
+                    <span>Tour<span class="brand-accent">Vista</span></span>
+                </a>
+                <p class="footer-desc">Next-generation travel platform offering curated packages, smart AI trip planning, and instant online bookings.</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="destinations.html">Destinations</a></li>
+                    <li><a href="packages.html">Tour Packages</a></li>
+                    <li><a href="map.html">Interactive Map</a></li>
+                    <li><a href="ai-planner.html">AI Itinerary Planner</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Support & Contact</h4>
+                <ul class="footer-contact">
+                    <li><i class="fa-solid fa-envelope"></i> tg190900@gmail.com</li>
+                    <li><i class="fa-solid fa-user-gear"></i> Tanu Gupta (Developer)</li>
+                    <li><i class="fa-solid fa-graduation-cap"></i> SRIIT</li>
+                    <li><i class="fa-solid fa-location-dot"></i> Morena / Raipur, India</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container footer-bottom-flex">
+                <p>&copy; 2026 TourVista. All rights reserved.</p>
+                <div class="footer-socials">
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Core Scripts -->
+    <script type="module" src="js/config/app-config.js"></script>
+    <script type="module" src="js/services/firebase-config.js"></script>
+    <script type="module" src="js/utils.js"></script>
+    <script type="module" src="js/ai-widget.js"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Map &amp; Trip Planner - TourVista</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" onerror="this.onerror=null;this.href='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css'"/>
+
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/tourvista-map.css">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+</head>
+<body class="page-map">
+
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="brand-logo">
+                <i class="fa-solid fa-compass brand-icon"></i>
+                <span>Tour<span class="brand-accent">Vista</span></span>
+            </a>
+            <nav class="nav-links" id="navLinks">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="destinations.html" class="nav-link">Destinations</a>
+                <a href="packages.html" class="nav-link">Packages</a>
+                <a href="map.html" class="nav-link">Interactive Map</a>
+                <a href="ai-planner.html" class="nav-link">AI Trip Planner</a>
+                <a href="about.html" class="nav-link">About Us</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="bookings.html" class="nav-link">My Bookings</a>
+            </nav>
+            <div class="nav-actions">
+                <span id="userEmailDisplay" class="user-badge">Tanu Gupta (tg190900@gmail.com)</span>
+                <button id="themeToggleBtn" class="btn-icon" aria-label="Toggle Theme"><i class="fa-solid fa-moon"></i></button>
+                <a href="bookings.html" class="btn btn-outline">My Bookings</a>
+            </div>
+            <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle Navigation"><i class="fa-solid fa-bars"></i></button>
+        </div>
+    </header>
+
+    <section class="tv-banner">
+        <div class="container">
+            <h1>Find a place, plan the route</h1>
+            <p>Search anywhere in India, get directions, and build a multi-stop trip.</p>
+        </div>
+    </section>
+
+    <div class="container"><div id="tvStatus" class="tv-status" hidden></div></div>
+
+    <main class="container tv-workspace">
+        <aside class="tv-panel">
+            <div class="tv-card">
+                <div class="tv-field">
+                    <label for="tvSearch">Where do you want to go?</label>
+                    <div class="tv-search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input id="tvSearch" type="search" autocomplete="off" placeholder="Taj Mahal, Goa, Manali, Khajuraho..." role="combobox" aria-expanded="true" aria-controls="tvResults">
+                        <ul id="tvResults" class="tv-results" role="listbox" hidden></ul>
+                    </div>
+                </div>
+                <div class="tv-field" style="margin-top:14px">
+                    <label for="tvOrigin">Starting point</label>
+                    <div class="tv-search">
+                        <i class="fa-solid fa-circle-dot"></i>
+                        <input id="tvOrigin" type="search" autocomplete="off" placeholder="Your city or landmark" aria-controls="tvOriginResults">
+                        <ul id="tvOriginResults" class="tv-results" role="listbox" hidden></ul>
+                    </div>
+                    <button id="tvLocate" class="btn btn-outline tv-btn-block" type="button"><i class="fa-solid fa-location-crosshairs"></i> Use My Current Location</button>
+                    <div id="tvLocInfo" hidden></div>
+                </div>
+            </div>
+
+            <div id="tvPlaceCard" class="tv-card" hidden></div>
+
+            <div id="tvRoutePanel" class="tv-card" hidden>
+                <h3>Directions</h3>
+                <div class="tv-modes" id="tvModes">
+                    <button type="button" data-mode="driving" class="active">🚗 Driving</button>
+                    <button type="button" data-mode="walking">🚶 Walking</button>
+                    <button type="button" data-mode="cycling">🚲 Cycling</button>
+                </div>
+                <div class="tv-stats" id="tvRouteSummary"></div>
+            </div>
+
+            <div class="tv-card">
+                <div class="tv-trip-head"><h3>My Trip</h3><span class="tv-badge" id="tvTripCount">0</span></div>
+                <ol class="tv-trip" id="tvTripList"></ol>
+                <div class="tv-stats" id="tvTripSummary" hidden></div>
+                <div class="tv-trip-actions">
+                    <button id="tvTripRoute" class="btn btn-primary" type="button" disabled><i class="fa-solid fa-route"></i> View route</button>
+                    <button id="tvTripClear" class="btn btn-outline" type="button" disabled><i class="fa-solid fa-trash"></i> Clear</button>
+                </div>
+            </div>
+        </aside>
+
+        <div class="tv-map-wrap" id="tvMapWrap">
+            <div id="tvMap" aria-label="Interactive map"></div>
+            <button class="tv-fs-btn" id="tvFs" type="button" aria-label="Full screen map"><i class="fa-solid fa-expand"></i></button>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-bottom-flex" style="padding: 20px 0; font-size: 0.85rem;">
+            <p>&copy; 2026 TourVista. Maintained by Tanu Gupta (tg190900@gmail.com). Map data &copy; OpenStreetMap contributors.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>window.L || document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"><\/script>');</script>
+    <script>
+      if (location.protocol === 'file:') {
+        var m = document.getElementById('tvStatus');
+        m.hidden = false;
+        m.innerHTML = '<strong>This page was opened as a file.</strong> Start the backend (<code>npm start</code> in the backend folder) and open <code>http://localhost:5124/map.html</code> instead.';
+      }
+    </script>
+    <script type="module" src="js/map-app.js"></script>
+    <script type="module" src="js/ai-widget.js"></script>
+</body>
+</html>

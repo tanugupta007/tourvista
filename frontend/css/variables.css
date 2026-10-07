@@ -1,0 +1,30 @@
+﻿:root {
+  --font-body: "Inter", sans-serif;
+  --font-heading: "Poppins", sans-serif;
+  --bg-light: #f6f8fc;
+  --bg-card: #ffffff;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --navy: #0b1f3a;
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --primary-light: rgba(37, 99, 235, 0.12);
+  --secondary: #10b981;
+  --border-color: rgba(148, 163, 184, 0.22);
+  --shadow-sm: 0 12px 32px rgba(15, 23, 42, 0.08);
+  --radius-sm: 12px;
+  --radius-md: 18px;
+  --radius-full: 999px;
+  --transition: all 0.25s ease;
+}
+
+html[data-theme="dark"] {
+  --bg-light: #0b1220;
+  --bg-card: #111827;
+  --text-main: #f8fafc;
+  --text-muted: #cbd5e1;
+  --navy: #e2e8f0;
+  --border-color: rgba(148, 163, 184, 0.24);
+  --primary-light: rgba(96, 165, 250, 0.15);
+  --shadow-sm: 0 18px 40px rgba(2, 6, 23, 0.55);
+}
